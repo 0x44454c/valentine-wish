@@ -1,0 +1,98 @@
+// @import 'node_modules/bootstrap/scss/functions';
+// @import 'node_modules/bootstrap/scss/variables';
+// @import 'node_modules/bootstrap/scss/mixins';
+@import 'node_modules/bootstrap/scss/bootstrap-reboot';
+$red: #e80202;
+.container{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: $red;
+	overflow: hidden;
+}
+.heart{
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	transform: rotate(45deg);
+	background: $red;
+	box-shadow: 25px 25px 50px rgba(0,0,0,0.2);
+	opacity: 0;
+	animation: show 5s forwards;
+	&:nth-child(3n+60){
+		z-index: 3;
+	}
+	&::before{
+		content: "";
+		position: absolute;
+		top: -50%;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: $red;
+		border-radius: 50%;
+		box-shadow: 0 -25px 25px rgba(0,0,0,0.1);
+	}
+	&::after{
+		content: "";
+		position: absolute;
+		top: 0%;
+		left: -50%;
+		width: 100%;
+		height: 100%;
+		background: $red;
+		border-radius: 50%;
+		box-shadow: -25px 0  25px rgba(0,0,0,0.1);
+	}
+}
+@keyframes show {
+	0%,95% {
+		opacity: 0;
+	} 100% {
+		opacity: 0.8;
+	}
+}
+.text{
+	color: #fff;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	text-transform: uppercase;
+	font-weight: 800;
+	z-index: 3;
+	animation: showText 4s forwards;
+	@include media-breakpoint-up(md){
+		font-size: 400%;
+		text-align: center;
+	}
+	@include media-breakpoint-down(md){
+		width: 320px;
+		font-size: 250%;
+		word-wrap:break-word;
+		text-align: center;
+	}
+}
+@keyframes showText {
+	0% {
+		opacity: 0;
+	} 100% {
+		opacity: 0.8;
+	}
+}
+.credit{
+	color: #fff;
+	z-index: 99;
+	position: fixed;
+	bottom: 2%;
+	left: 50%;
+	transform: translateX(-50%);
+	text-align: center;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	white-space: nowrap;
+	a{
+		color: #a3d5e9;
+	}
+}
